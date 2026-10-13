@@ -28,3 +28,14 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+
+# Archivos de configuración local de IntelliJ IDEA
+.idea/
+*.iml
+# Archivos compilados
+out/
+*.class
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
+

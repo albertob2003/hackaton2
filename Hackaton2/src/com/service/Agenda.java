@@ -1,7 +1,8 @@
 package com.hackathon.agenda.service;
 
 import com.hackathon.agenda.model.Contacto;
-
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -98,4 +99,44 @@ public class Agenda {
             System.out.println("No se pudo modificar: El contacto no existe.");
         }
     }
+
+
+    // 6. listarContactos()
+    public void listarContactos() {
+
+        // Verificar si la agenda está vacía
+        if (contactos.isEmpty()) {
+            System.out.println("La agenda no contiene contactos.");
+            return;
+        }
+
+        // Ordenar por nombre y después por apellido
+        Collections.sort(contactos, new Comparator<Contacto>() {
+            @Override
+            public int compare(Contacto c1, Contacto c2) {
+
+                int resultadoNombre = c1.getNombre()
+                        .compareToIgnoreCase(c2.getNombre());
+
+                if (resultadoNombre != 0) {
+                    return resultadoNombre;
+                }
+
+                return c1.getApellido()
+                        .compareToIgnoreCase(c2.getApellido());
+            }
+        });
+
+        // Mostrar los contactos ordenados
+        System.out.println("\n========== AGENDA DE CONTACTOS ==========");
+        System.out.println("-----------------------------------------");
+
+        for (Contacto contacto : contactos) {
+            System.out.println(contacto);
+        }
+
+        System.out.println("-----------------------------------------");
+        System.out.println("Total de contactos: " + contactos.size());
+    }
+
 } // <--- Esta única llave cierra correctamente la clase Agenda

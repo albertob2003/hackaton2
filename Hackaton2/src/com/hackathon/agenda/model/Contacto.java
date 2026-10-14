@@ -55,7 +55,7 @@ public class Contacto {
         );
     }
 
-    @Override
+   @Override
     public String toString() {
         return nombre + " " + apellido + " - " + telefono;
     }

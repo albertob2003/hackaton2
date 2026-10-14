@@ -94,18 +94,10 @@ public class Agenda {
 
     // 5. modificarTelefono(...)
     public void modificarTelefono(String nombre, String apellido, String nuevoTelefono) {
-        boolean modificado = false;
-        for (Contacto c : contactos) {
-            if (c.getNombre().equalsIgnoreCase(nombre) && c.getApellido().equalsIgnoreCase(apellido)) {
-                c.setTelefono(nuevoTelefono);
-                System.out.println("¡Teléfono modificado con éxito!");
-                modificado = true;
-                break;
-            }
-        }
-        if (!modificado) {
-            System.out.println("No se pudo modificar: El contacto no existe.");
-        }
+
+    }
+
+    public void listarContactos() {
     }
 
 

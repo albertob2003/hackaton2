@@ -4,6 +4,11 @@ import com.hackathon.agenda.model.Contacto;
 import com.hackathon.agenda.service.Agenda;
 import java.util.Scanner;
 
+import com.hackathon.agenda.model.Contacto;
+import com.hackathon.agenda.service.Agenda;
+
+import java.util.Scanner;
+
 public class MainApp {
 
     private static final Scanner scanner = new Scanner(System.in);

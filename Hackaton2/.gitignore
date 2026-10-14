@@ -33,8 +33,6 @@ bin/
 .idea/
 *.iml
 # Archivos compilados
-out/
 *.class
 # Archivos del sistema operativo
-.DS_Store
 Thumbs.db

@@ -1,4 +1,8 @@
-package com.agenda;
+package com.hackathon2.service;
+
+import com.hackathon.agenda.model.Contacto;
+import com.hackathon.agenda.service.Agenda;
+import java.util.Scanner;
 
 public class MainApp {
 
@@ -69,14 +73,14 @@ public class MainApp {
                 case "6" -> opcionModificarTelefono();
                 case "7" -> {
                     if (agenda.agendaLlena()) {
-                        System.out.println("[ALERTA]: La agenda está completamente LLENA.");
+                        System.out.println("> [ALERTA]: La agenda está completamente LLENA.");
                     } else {
-                        System.out.println("[INFO]: La agenda tiene espacio disponible.");
+                        System.out.println("> [INFO]: La agenda tiene espacios disponibles.");
                     }//else
                 }// case 7
                 case "8" -> agenda.espacioLibres();
                 case "0" -> salir = true;
-                default -> System.out.println("[ERROR]: Opción no válida. Intenta nuevamente.");
+                default -> System.out.println("> [ERROR]: Opción no válida. Intenta nuevamente.");
 
             }// switch
         } while (!salir);

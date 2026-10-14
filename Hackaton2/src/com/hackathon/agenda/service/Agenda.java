@@ -26,7 +26,7 @@ public class Agenda {
 
     public int espacioLibres() {
         int libres = tamanioMaximo - contactos.size();
-        System.out.println("Espacios libres disponibles: " + libres + " de " + tamanioMaximo);
+        System.out.println("\nEspacios libres disponibles: " + libres + " de " + tamanioMaximo);
         return libres;
     } // calcula la cantidad de espacios libres que tiene la agenda
 
@@ -46,21 +46,21 @@ public class Agenda {
     // 2. añadirContacto(Contacto c)
     public void anadirContacto(Contacto c) {
         if (agendaLlena()) {
-            System.out.println("No se puede añadir: La agenda está llena.");
+            System.out.println("\nNo se puede añadir: La agenda está llena.");
             return;
         }
         if (c.getNombre() == null || c.getNombre().trim().isEmpty() ||
                 c.getApellido() == null || c.getApellido().trim().isEmpty()) {
-            System.out.println("Error: El nombre y el apellido no pueden estar vacíos.");
+            System.out.println("\nError: El nombre y el apellido no pueden estar vacíos.");
             return;
         }
         if (existeContacto(c)) {
-            System.out.println("Error: El contacto ya existe en la agenda.");
+            System.out.println("\nError: El contacto ya existe en la agenda.");
             return;
         }
 
         contactos.add(c);
-        System.out.println("¡Contacto añadido con éxito!");
+        System.out.println("\n¡Contacto añadido con éxito!");
     }
 
     // Alias para garantizar compatibilidad si se invoca con 'ñ' o sin 'ñ'
@@ -73,32 +73,50 @@ public class Agenda {
         boolean encontrado = false;
         for (Contacto c : contactos) {
             if (c.getNombre().equalsIgnoreCase(nombre) && c.getApellido().equalsIgnoreCase(apellido)) {
-                System.out.println("Teléfono de " + c.getNombre() + " " + c.getApellido() + ": " + c.getTelefono());
+                System.out.println("\nTeléfono de " + c.getNombre() + " " + c.getApellido() + ": " + c.getTelefono());
                 encontrado = true;
                 break;
             }
         }
         if (!encontrado) {
-            System.out.println("No encontrado.");
+            System.out.println("\nNo encontrado.");
         }
     }
 
     // 4. eliminarContacto(Contacto c)
     public void eliminarContacto(Contacto c) {
         if (contactos.remove(c)) {
-            System.out.println("¡Contacto eliminado con éxito!");
+            System.out.println("\n¡Contacto eliminado con éxito!");
         } else {
-            System.out.println("No se pudo eliminar: El contacto no existe en la agenda.");
+            System.out.println("\nNo se pudo eliminar: El contacto no existe en la agenda.");
         }
     }
 
     // 5. modificarTelefono(...)
     public void modificarTelefono(String nombre, String apellido, String nuevoTelefono) {
 
+        boolean encontrado = false;
+
+        for (Contacto contacto : contactos) {
+
+            if (contacto.getNombre().trim().equalsIgnoreCase(nombre.trim())
+                    && contacto.getApellido().trim().equalsIgnoreCase(apellido.trim())) {
+
+                contacto.setTelefono(nuevoTelefono);
+
+                System.out.println("\n¡Número actualizado correctamente!");
+
+                encontrado = true;
+                break;
+            }
+        }
+
+        if (!encontrado) {
+            System.out.println("\nEl contacto no existe en la agenda.");
+        }
     }
 
-    public void listarContactos() {
-    }
+
 
 
     // 6. listarContactos()
@@ -106,7 +124,7 @@ public class Agenda {
 
         // Verificar si la agenda está vacía
         if (contactos.isEmpty()) {
-            System.out.println("La agenda no contiene contactos.");
+            System.out.println("\nLa agenda no contiene contactos.");
             return;
         }
 
@@ -136,7 +154,7 @@ public class Agenda {
         }
 
         System.out.println("-----------------------------------------");
-        System.out.println("Total de contactos: " + contactos.size());
+        System.out.println("\nTotal de contactos: " + contactos.size());
     }
 
 } // <--- Esta única llave cierra correctamente la clase Agenda

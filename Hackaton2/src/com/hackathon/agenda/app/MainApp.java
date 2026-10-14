@@ -1,12 +1,7 @@
-package com.hackathon2.service;
+package com.hackathon.agenda.app;
 
 import com.hackathon.agenda.model.Contacto;
 import com.hackathon.agenda.service.Agenda;
-import java.util.Scanner;
-
-import com.hackathon.agenda.model.Contacto;
-import com.hackathon.agenda.service.Agenda;
-
 import java.util.Scanner;
 
 public class MainApp {
@@ -29,26 +24,26 @@ public class MainApp {
 
     private static void inicializarAgenda() {
         System.out.println("\n¿Cómo deseas crear la agenda?");
-        System.out.println("1. Indicar tamaño máximo personalizado");
+        System.out.println("\n1. Indicar tamaño máximo personalizado");
         System.out.println("2. Usar tamaño por defecto (10 contactos)");
-        System.out.print("Selecciona una opción (1-2): ");
+        System.out.print("\nSelecciona una opción (1-2): ");
 
         String opcion = scanner.nextLine().trim();
         if ("1".equals(opcion)) {
-            System.out.print("Ingresa el tamaño máximo: ");
+            System.out.print("\nIngresa el tamaño máximo: ");
             try {
                 int tamano = Integer.parseInt(scanner.nextLine().trim());
                 if (tamano <= 0) {
-                    System.out.println("Tamaño inválido. Se asigna tamaño por defecto (10).");
+                    System.out.println("\nTamaño inválido. Se asigna tamaño por defecto (10).");
                     agenda = new Agenda();
                 } else {
                     agenda = new Agenda(tamano);
-                    System.out.println("Agenda creada con capacidad para " + tamano + " contactos.");
+                    System.out.println("\nAgenda creada con capacidad para " + tamano + " contactos.");
 
                 }//else
 
             } catch (NumberFormatException e) {
-                System.out.println("Entrada no numérica. Se asigna tamaño por defecto (10).");
+                System.out.println("\nEntrada no numérica. Se asigna tamaño por defecto (10).");
                 agenda = new Agenda();
 
             }//catch
@@ -56,7 +51,7 @@ public class MainApp {
         } else {
 
             agenda = new Agenda();
-            System.out.println("Agenda creada con capacidad por defecto de 10 contactos.");
+            System.out.println("\nAgenda creada con capacidad por defecto de 10 contactos.");
         }// else
 
     }// inicializarAgenda
@@ -66,7 +61,7 @@ public class MainApp {
 
         do {
             mostrarMenu();
-            System.out.print("Elige una opción: ");
+            System.out.print("\nElige una opción: ");
             String opcion = scanner.nextLine().trim();
 
             switch (opcion) {
@@ -78,14 +73,14 @@ public class MainApp {
                 case "6" -> opcionModificarTelefono();
                 case "7" -> {
                     if (agenda.agendaLlena()) {
-                        System.out.println("> [ALERTA]: La agenda está completamente LLENA.");
+                        System.out.println("\n> [ALERTA]: La agenda está completamente LLENA.");
                     } else {
-                        System.out.println("> [INFO]: La agenda tiene espacios disponibles.");
+                        System.out.println("\n> [INFO]: La agenda tiene espacios disponibles.");
                     }//else
                 }// case 7
                 case "8" -> agenda.espacioLibres();
                 case "0" -> salir = true;
-                default -> System.out.println("> [ERROR]: Opción no válida. Intenta nuevamente.");
+                default -> System.out.println("\n> [ERROR]: Opción no válida. Intenta nuevamente.");
 
             }// switch
         } while (!salir);
@@ -93,7 +88,7 @@ public class MainApp {
 
     private static void mostrarMenu() {
         System.out.println("\n=============== MENÚ AGENDA ====================");
-        System.out.println("> 1. Añadir contacto");
+        System.out.println("\n> 1. Añadir contacto");
         System.out.println("> 2. Verificar si existe contacto");
         System.out.println("> 3. Listar contactos (ordenados)");
         System.out.println("> 4. Buscar contacto por nombre y apellido");
@@ -107,7 +102,7 @@ public class MainApp {
     }// private mostrarMenu
 
     private static void opcionAnadirContacto() {
-        System.out.print("Nombre: ");
+        System.out.print("\nNombre: ");
         String nombre = scanner.nextLine();
         System.out.print("Apellido: ");
         String apellido = scanner.nextLine();
@@ -120,22 +115,22 @@ public class MainApp {
     }// opcionAnadirContacto
 
     private static void opcionExisteContacto() {
-        System.out.print("Nombre a verificar: ");
+        System.out.print("\nNombre a verificar: ");
         String nombre = scanner.nextLine();
         System.out.print("Apellido a verificar: ");
         String apellido = scanner.nextLine();
 
         Contacto c = new Contacto(nombre, apellido, "");
         if (agenda.existeContacto(c)) {
-            System.out.println("> [RESULTADO]: El contacto " + nombre + " " + apellido + " SÍ existe.");
+            System.out.println("\n> [RESULTADO]: El contacto " + nombre + " " + apellido + " SÍ existe.");
         } else {
-            System.out.println("> [RESULTADO]: El contacto " + nombre + " " + apellido + " NO existe.");
+            System.out.println("\n> [RESULTADO]: El contacto " + nombre + " " + apellido + " NO existe.");
         }//else
 
     }// opcionExisteContacto
 
     private static void opcionBuscarContacto() {
-        System.out.print("Nombre del contacto a buscar: ");
+        System.out.print("\nNombre del contacto a buscar: ");
         String nombre = scanner.nextLine();
         System.out.print("Apellido del contacto a buscar: ");
         String apellido = scanner.nextLine();
@@ -144,7 +139,7 @@ public class MainApp {
     }//opcionBuscarContacto
 
     private static void opcionEliminarContacto() {
-        System.out.print("Nombre del contacto a eliminar: ");
+        System.out.print("\nNombre del contacto a eliminar: ");
         String nombre = scanner.nextLine();
         System.out.print("Apellido del contacto a eliminar: ");
         String apellido = scanner.nextLine();
@@ -155,7 +150,7 @@ public class MainApp {
     }//opcionEliminarContacto
 
     private static void opcionModificarTelefono() {
-        System.out.print("Nombre del contacto: ");
+        System.out.print("\nNombre del contacto: ");
         String nombre = scanner.nextLine();
         System.out.print("Apellido del contacto: ");
         String apellido = scanner.nextLine();
